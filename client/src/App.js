@@ -1,12 +1,15 @@
 import React, {useState, useEffect} from 'react'
-import TextField from '@mui/material/TextField';
+
 import Autocomplete from '@mui/material/Autocomplete';
+import TextField from '@mui/material/TextField';
+
+import KitDetail from './KitDetail';
 
 import './App.css';
 
 function App() {
   const [kitSearchData, setKitSearchData] = useState([]);
-  const [kitData, setKitData] = useState({});
+  const [kitData, setKitData] = useState();
   const [kitId, setKitId] = useState();
   const [autocompleteValue, setAutocompleteValue] = useState();
 
@@ -40,17 +43,25 @@ function App() {
 
   return (
     <div className="App">
+      <p className="title">Biobot Kit Search</p>
+
       <Autocomplete
         disablePortal
         id="kit-autocomplete-search"
         options={kitSearchData}
         filterOptions={(x) => x}
-        sx={{ width: 300 }}
         onChange={(_, value) => setKitId(value.id)}
         onInputChange={(_, value) => setAutocompleteValue(value)}
         renderInput={(params) => <TextField {...params} label="Kit ID" />}
+        className="autocomplete-field"
       />
-      <div>{kitData?.shipping_tracking_code}</div>
+
+      { kitData &&
+        <KitDetail
+          kitId={kitData.label_id}
+          tracking={kitData.shipping_tracking_code}
+        />
+      }
     </div>
   );
 }

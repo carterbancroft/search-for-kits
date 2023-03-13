@@ -24,7 +24,6 @@ app.get('/search', (req, res) => {
   const searchString = req.query.q;
 
   const filteredData = dataJson.filter((d) => d.label_id.includes(searchString));
-
   const responseObj = filteredData.map((d) => ({ label: d.label_id, id: d.id }));
 
   return res.json(responseObj);
