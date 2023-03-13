@@ -6,7 +6,7 @@ function KitDetail({kitId, tracking}) {
     <Card variant="outlined" sx={{ width: 300 }}>
       <CardContent>
         <p><strong>Kit ID:</strong> {kitId}</p>
-        <p><strong>FedEx Tracking:</strong> <a href={`https://www.fedex.com/fedextrack/?tracknumbers=${tracking}`} target="_blank">{tracking}</a></p>
+        <p><strong>FedEx Tracking:</strong> <a href={`https://www.fedex.com/fedextrack/?tracknumbers=${tracking}`} target="_blank" rel="noreferrer">{tracking}</a></p>
       </CardContent>
     </Card>
   ) 
