@@ -3,7 +3,7 @@
 A simple app for searching the Biobot database for customer kits. Provides info on kit shipping status.
 
 ## Requirements
-`Node.js` - I tested on even versions 12-18 with success. I'd suggest [nvm](https://github.com/nvm-sh/nvm) for managing and installing Node/npm versions.
+`Node.js` - Specifically the latest LTS (v18). I'd suggest [nvm](https://github.com/nvm-sh/nvm) for managing and installing Node/npm versions.
 
 A browser. I tested this in Firefox, Chrome and Safari with consistent results.
 
