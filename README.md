@@ -86,6 +86,7 @@ In the app code itself I've got a handful of TODOs pointing out some things that
 - Unit tests. There are neither FE or BE unit tests here, I just didn't have time to get them in and I made an executive decision not to include them, as bad as that feels. The next improvement I'd like to make would be to add unit tests. Probably using Jest or Mocha and React Testing Library.
 - Add a database. I would like to add a real DB and get away from loading JSON into memory... maybe a containerized version of PostGres. Even a simple SQLite DB would be more representative of a production version though.
 - Search scaling. This feels like a good solution for a product like [Algolia](https://www.algolia.com/). If we could create a searchable index in Algolia instead of hitting the DB and handling search logic ourselves it would be a big improvement. This would obviously require a lot of extra work. For example, any time kits are added or removed from the DB the Algolia index would need updating.
+- Security. This is probably a big one. Right now the API is wide open and using `GET`s to request data. I would bet that this product would be behind some sort of auth and that the user would only be able to search their own kits. Maybe not though? I'd want more context from Product on this.
 - Debounced search. Right now, any time a new character is entered into the Autocomplete it makes an API request, even if the user is typing quickly. There should be a timeout to minimize requests.
 - Fix FE vulnerabilities. You'll notice that there are 6 high severity vulnerabilities when installed `node_modules` on the FE. This isn't ideal.
 - Query validation. Right now I'm just trusting user input. This isn't good for a production ready application and if this became DB backed I'd fix this.
@@ -93,6 +94,7 @@ In the app code itself I've got a handful of TODOs pointing out some things that
 - Autocomplete length. This is another question I would ask... I wonder if it should only show, say, 5 or 10 autocomplete options instead of ALL of them. This would allow us to put a limit on the DB query/Algolia request.
 - Add something like `nodemon`. Mostly it'd be nice to just have the API restart with changes. Currently only the FE does that.
 - Environments. This should have separate Dev/Staging (maybe)/Prod environments. At least to manage different URLs based on different contexts.
+- Error monitoring. I like [Sentry](https://sentry.io).
 - More npm scripts. I could imagine some nice scripts to populate/run a DB in a dev environment. It also needs test scripts. Probably a lot of niceties to add here to make it more developer friendly as the product is built out.
 - Search bugs. There may be some small issues with search. Notably you can't make a request to get kit details by hitting the enter key. Also if you clear the search field the dropdown still shows the last selected Kit ID value alone. The dropdown should also say something a little nicer than "No options" when there are no autocomplete values to show.
 - Match Biobot site styling. At the very least I thought it'd be nice to include the Biobot logo but alas, this wasn't a high priority.
@@ -100,3 +102,4 @@ In the app code itself I've got a handful of TODOs pointing out some things that
 - Clean up `create-react-app` cruft. There's always stuff this utility generates that's not necessary for the end product. I'd like to clean it up but I didn't prioritize it.
 - Build process. It'd be fun to add some GitHub actions to run linting/unit tests on every push.
 - A [`debug`](https://www.npmjs.com/package/debug) like package. I like using `debug` for logging helpful stuff in a dev context without using `console.log`s.
+- Refactor directory structures a bit. Particularly on the FE, I like to have a components directory and folders for specific components.
